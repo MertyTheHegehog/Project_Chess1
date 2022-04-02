@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 public class Main {
-/*
+///*
     public static ChessBoard buildBoard() {
         ChessBoard board = new ChessBoard("White");
 
@@ -38,17 +40,10 @@ public class Main {
         board.board[6][7] = new Pawn("Black");
         return board;
     }
-*/
+//*/
     public static void main(String[] args) {
-        ChessBoard board = new ChessBoard("White");
-        board[7][7] = new Queen("White");
-
-        board[3][3] = new Queen("White");
-        //board.board[4][4] = new Queen("Black");
-
-        board.printBoard();
-        System.out.println(board.moveToPosition(7,7,3,3));
-/*
+        
+///*
         ChessBoard board = buildBoard();
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
@@ -100,6 +95,6 @@ public class Main {
                 }
             }
         }
- */
+// */
     }
 }

@@ -1,4 +1,4 @@
-public class Rook extends ChessPiece implements WalksTheLines {
+public class Rook extends ChessPiece {
     public Rook(String color) {
         super(color);
     }
@@ -6,9 +6,12 @@ public class Rook extends ChessPiece implements WalksTheLines {
     @Override
     public boolean canMoveToPosition(ChessPiece[][] board, int line,
                                      int column, int toLine, int toColumn) {
-        if (notBeyondLimits(toLine, toColumn) && notSameTile(line, column, toLine, toColumn) &&
+        if (conditionsArePassed(board,line, column, toLine, toColumn) &&
                 noOneOnTheLine(board, line, column, toLine, toColumn)) {
-            return line == toLine || column == toColumn;
+            if (line == toLine || column == toColumn) {
+                this.check = false;
+                return true;
+            }
         }
         return false;
     }

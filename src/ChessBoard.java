@@ -12,16 +12,9 @@ public class ChessBoard {
 
     public boolean moveToPosition(int startLine, int startColumn, int endLine, int endColumn) {
         if (checkPos(startLine) && checkPos(startColumn) &&
-                nowPlayer.equals(board[startLine][startColumn].getColor()) &&
-                (board[endLine][endColumn]==null||!board[endLine][endColumn].getColor().equals(nowPlayer))&&
-                board[startLine][startColumn].canMoveToPosition(board,
-                        startLine, startColumn, endLine, endColumn)&&
-                !(board[startLine][startColumn].getSymbol().equals("K")
-                        &&new King(nowPlayer).isUnderAttack(board,endLine,endColumn))) {
-            if (board[startLine][startColumn].getSymbol().equals("K") ||  // check position for castling
-                    board[startLine][startColumn].getSymbol().equals("R")) {
-                board[startLine][startColumn].check = false;
-            }
+                board[startLine][startColumn]!= null&&
+                nowPlayer.equals(board[startLine][startColumn].getColor())&&
+                board[startLine][startColumn].canMoveToPosition(board,startLine,startColumn,endLine,endColumn)) {
 
             board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
             board[startLine][startColumn] = null; // set null to previous cell
@@ -44,7 +37,8 @@ public class ChessBoard {
                 if (board[i][j] == null) {
                     System.out.print(".." + "\t");
                 } else {
-                    System.out.print(board[i][j].getSymbol() + board[i][j].getColor().substring(0, 1).toLowerCase() + "\t");
+                    System.out.print(board[i][j].getSymbol() +
+                            board[i][j].getColor().substring(0, 1).toLowerCase() + "\t");
                 }
             }
             System.out.println();

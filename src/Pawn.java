@@ -6,7 +6,7 @@ public class Pawn extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessPiece[][] board, int line, int column, int toLine, int toColumn) {
-        if (notBeyondLimits(toLine, toColumn)) {
+        if (conditionsArePassed(board,line, column, toLine, toColumn)) {
             if (board[toLine][toColumn] == null){
                 if (column == toColumn) {
                     int difference = toLine - line;
