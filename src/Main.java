@@ -42,9 +42,16 @@ public class Main {
     }
 //*/
     public static void main(String[] args) {
-        
+
 ///*
-        ChessBoard board = buildBoard();
+        ChessBoard board = new ChessBoard("White");
+
+        board.board[3][3] = new Queen("White");
+        board.board[0][0] = new Queen("Black");
+
+        board.moveToPosition(3,3, 0,0)
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
                 Чтобы проверить игру надо вводить команды:

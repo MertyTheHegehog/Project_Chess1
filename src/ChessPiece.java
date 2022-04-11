@@ -52,16 +52,24 @@ public abstract class ChessPiece {
             lineDown = line;
         }
 
+        int columnRight, columnLeft;
+        if (toColumn < column) {
+            columnRight = column;
+            columnLeft = toColumn;
+        } else {
+            columnRight = toColumn;
+            columnLeft = column;
+        }
+
         //diagonals:
         if (toLine - line == toColumn - column) {
             for (int i = lineDown + 1; i < lineUp; i++) {
-                if (board[i][i] != null)
+                if (board[i][columnLeft++] != null)
                     return false;
             }
-            //!!!!!!!!!! - 1
         } else if (toLine - line == column - toColumn) {
             for (int i = lineUp - 1; i > lineDown; i--) {
-                if (board[i][i] != null)
+                if (board[i][columnLeft++] != null)
                     return false;
             }
         }
@@ -73,14 +81,7 @@ public abstract class ChessPiece {
                     return false;
             }
         }
-        int columnRight, columnLeft;
-        if (toColumn < column) {
-            columnRight = column;
-            columnLeft = toColumn;
-        } else {
-            columnRight = toColumn;
-            columnLeft = column;
-        }
+
         if (line == toLine) {
             for (int i = columnLeft + 1; i < columnRight; i++) {
                 if (board[line][i] != null) {
